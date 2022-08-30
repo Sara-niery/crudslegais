@@ -9,7 +9,9 @@
 <body>
     <h1>Cadastro</h1>
     <form method="post">
-        {{ form_livro }}
+        {% csrf_token %}
+        {% form_livro %}
+        <p><input type="submit" value="Cadastrar"/></p>
     </form>
 </body>
 </html>
