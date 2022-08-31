@@ -1,0 +1,12 @@
+body {
+    background-image: livraria;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 1.5cm;
+}

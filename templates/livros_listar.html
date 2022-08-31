@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>livros</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Bem Vindos</h1>
-
+    <h1>Minha biblioteca</h1>
+    <p>meus  livros:</p>
+    {% for LI in todos_livros %}
+    <p>Título: {{LI.titulo}} </p>
+    {% empty %}
+    <p>ainda não temos livros aqui</p>
+    {% endfor %}
 </body>
 </html>
