@@ -8,11 +8,20 @@
 </head>
 <body>
     <h1>Minha biblioteca</h1>
-    <p>meus  livros:</p>
-    {% for LI in todos_livros %}
-    <p>Título: {{LI.titulo}} </p>
-    {% empty %}
-    <p>ainda não temos livros aqui</p>
-    {% endfor %}
+    <h2>meus livros:</h2>
+    <a href="{% url 'cadastrar_livro' %}">Cadastrar um novo livro</a>
+
+    <ol>
+        {% for livro in livros %}
+            <li>
+                <b>Título:</b> {{ livro.titulo }} por {{ livro.autor }}
+                <a href="{% url 'atualizar_livro' livro.id %}">Editar</a>
+                <a href="{% url 'deletar_livro' livro.id %}">Excluir</a>
+            </li>
+        {% empty %}
+            <b>ainda não temos livros aqui</b>
+        {% endfor %}
+    </ol>
+    
 </body>
 </html>

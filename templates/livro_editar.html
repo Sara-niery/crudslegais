@@ -8,11 +8,11 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <h1>Cadastro</h1>
-    <form method="POST" action="{% url 'cadastrar_livro' %}"  enctype="multipart/form-data">
+    <h1>Atualizar</h1>
+    <form method="POST" action="{% url 'atualizar_livro' livro.id %}"  enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form_livro.as_p }}
-        <p><input type="submit" value="Cadastrar"/></p>
+        {{ form.as_p }}
+        <p><input type="submit" value="Atualizar"/></p>
     </form>
 </body>
 </html>

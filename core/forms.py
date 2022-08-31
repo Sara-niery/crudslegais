@@ -4,6 +4,7 @@ from django import forms
 from .models import cliente, editora, livro
 
 class LivroForm(forms.ModelForm):
+    capa = forms.FileField(required=False)
     class Meta:
         model = livro
         fields = ['titulo', 'autor', 'edicao', 'capa']
