@@ -9,9 +9,9 @@
 </head>
 <body>
     <h1>Cadastro</h1>
-    <form method="POST" action="{% url 'cadastrar_livro' %}"  enctype="multipart/form-data">
+    <form method="POST" action="{% url 'cadastrar_musica' %}"  enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form_livro.as_p }}
+        {{ form_musica.as_p }}
         <p><input type="submit" value="Cadastrar"/></p>
     </form>
 </body>

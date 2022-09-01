@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Atualizar</h1>
-    <form method="POST" action="{% url 'atualizar_livro' livro.id %}"  enctype="multipart/form-data">
+    <form method="POST" action="{% url 'atualizar_musica' musica.id %}"  enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <p><input type="submit" value="Atualizar"/></p>
