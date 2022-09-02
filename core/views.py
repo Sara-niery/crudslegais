@@ -15,15 +15,14 @@ def listar_musica(request):
 
 def cadastrar_musica(request):
     if request.method == "POST":
-        form = MusicaForm(request.POST or None, request.FILES or None)
+        form = MusicaForm(request.POST or None, request.FILES or None, instance= musica)
         if form.is_valid():
-            try:
-                form.save()
-                return redirect('listar_musica')
-            except:
-                pass
+           form.save()
+           return redirect('listar_musica')
+           
     else:
-        form = MusicaForm()
+        form = MusicaForm(instance= musica)
+        return render (request, )
         
     contexto = {
         'form_musica': form
@@ -68,18 +67,16 @@ def listar_cliente(request):
 
 def cadastrar_cliente(request):
     if request.method == "POST":
-        formC = ClienteForm(request.POST, request.FILES)
-        if formC.is_valid():
-            try:
-                formC.save()
-                return redirect('listar_clientes')
-            except:
-                pass
+        form = ClienteForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_clientes')
+            
     else:
-        formC = ClienteForm()
+        form = ClienteForm()
         
     contexto = {
-        'form_cliente': formC
+        'form_cliente': form
     }
     return render(request,'cliente_cadastrar.html',contexto)
 
@@ -88,16 +85,16 @@ def atualizar_cliente(request, id):
     meu_cliente = cliente.objects.get(id=id)
     
     if request.method == "POST":
-        formC = ClienteForm(request.POST, request.FILES, instance=meu_cliente)
-        if formC.is_valid():
-            formC.save()
+        form = ClienteForm(request.POST, request.FILES, instance=meu_cliente)
+        if form.is_valid():
+            form.save()
             print("salvou form")
             return redirect('listar_cliente')
     else:
-        formC = ClienteForm(instance=meu_cliente)
+        form = ClienteForm(instance=meu_cliente)
     context = {
         "cliente": meu_cliente,
-        "formC": formC
+        "form": form
     }
     return render(request, 'cliente_editar.html', context)
 
@@ -115,17 +112,14 @@ def listar_gravadora(request):
     return render(request, 'gravadora_listar.html', context)
 
 def cadastrar_gravadora(request):
-    formG = GravadoraForm(request.POST, request.FILES)
-    if formG.is_valid():
-        try:
-            formG.save()
-            return redirect('listar_gravadora')
-        except:
-            pass
+    form = GravadoraForm(request.POST, request.FILES)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_gravadora')
     else:
-        formG = GravadoraForm()
+        form = GravadoraForm()
     contexto = {
-        'form_gravadora': formG
+        'form_gravadora': form
             }
     return render(request,'gravadora_cadastrar.html',contexto)
 
@@ -133,17 +127,17 @@ def atualizar_gravadora(request, id):
     minha_gravadora = gravadora.objects.get(id=id)
     
     if request.method == "POST":
-        formG = GravadoraForm(request.POST, request.FILES, instance=minha_gravadora)
-        if formG.is_valid():
-            formG.save()
+        form = GravadoraForm(request.POST, request.FILES, instance=minha_gravadora)
+        if form.is_valid():
+            form.save()
             print("salvou form")
             return redirect('listar_gravadora')
     else:
-        formG = GravadoraForm(instance=minha_gravadora)
+        form = GravadoraForm(instance=minha_gravadora)
 
     context = {
         "gravadora": minha_gravadora,
-        "formG": formG
+        "form": form
     }
     return render(request, 'gravadora_editar.html', context)
         
