@@ -12,25 +12,19 @@
 <body>
     <h1>Nossos cliente</h1>
 
-    {% for CL in todos_clientes %}
-    <p>Título: {{form.nome1}} </p>
-    {% empty %}
-    <b>ainda não temos clientes cadastrados</b>
-    {% endfor %}
-
     <a href="{% url 'cadastrar_clientes' %}">Cadastrar um novo cliente</a>
     <ol>
         {% for cliente in todos_clientes %}
             <li> 
-                <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
+                <b>Título:</b> {{ cliente.nome1 }} 
                 <a href="{% url 'atualizar_cliente' cliente.id %}">Editar</a>
                 <a href="{% url 'deletar_cliente' cliente.id %}">Excluir</a>
             </li>
-        {% empty %}
+      
  
-        {% endfor %}
+        {% empty %}
+    <b>ainda não temos clientes cadastrados</b>
+    {% endfor %}
     </ol>
-    
-
 </body>
 </html>

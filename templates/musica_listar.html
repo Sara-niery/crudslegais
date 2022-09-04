@@ -14,17 +14,20 @@
     <h2>minhas musicas:</h2>
     <a href="{% url 'cadastrar_musica' %}">Cadastrar uma nova musica</a>
 
-        {% for musicas in todas_musica %}
-          
-        <b>Título:{{ musica.titulo }} por {{ musica.autor }}</b>
-        <img src="/media/images/{{musica.capa}}" alt="" width="100px" height="100px"/>
-        <a href="{% url 'atualizar_musica' musica.id %}">Editar</a>
-        <a href="{% url 'deletar_musica' musica.id %}">Excluir</a>
-        
-        {% empty %}
-        <b>ainda não temos musicas aqui aqui</b>
-        {% endfor %}
-  
+        <ol>
+            {% for musica in todas_musicas %}
+                <li>
+                    <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
+                    <img src="/media/images/{{musica.capa}}" alt="" width="100px" height="100px"/>
+                    <a href="{% url 'atualizar_musica' musica.id %}">Editar</a>
+                    <a href="{% url 'deletar_musica' musica.id %}">Excluir</a>
+                </li>
+            {% empty %}
+                <b>ainda não temos livros aqui</b>
+            {% endfor %}
+        </ol>
+
+
     
 </body>
 </html>
