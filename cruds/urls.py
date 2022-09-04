@@ -1,5 +1,7 @@
 
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from core.views import listar_musica, cadastrar_musica, atualizar_musica, deletar_musica
 from core.views import listar_cliente, cadastrar_cliente , atualizar_cliente, deletar_cliente 
@@ -16,7 +18,7 @@ urlpatterns = [
 
     path('cliente/', listar_cliente,  name= 'listar_clientes' ),
     path('clientes/cadastrar/',cadastrar_cliente,name='cadastrar_clientes'),
-    path('cliente/atualizar/<int:id>',atualizar_cliente),
+    path('cliente/atualizar/<int:id>',atualizar_cliente, name='atualizar_cliente'),
     path('cliente/deletar/<int:id>', deletar_cliente,name='deletar_cliente'),
 
     path('gravadora/', listar_gravadora , name ='listar_gravdora'),
@@ -25,4 +27,4 @@ urlpatterns = [
     path('gravadora/deletar/<int:id>',deletar_gravadora, name='deletar_gravadora'),
 
     path('admin/', admin.site.urls),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

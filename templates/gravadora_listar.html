@@ -1,12 +1,36 @@
 <!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
+    <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 <body>
+    <h1>gravadoras </h1>
+    <h1>Nossos cliente</h1>
+
+    {% for gravadoras in gravadora %}
+    <p>Título: {{form.nome2}} </p>
+    {% empty %}
+    <b>ainda não temos clientes cadastrados</b>
+    {% endfor %}
+
+    <a href="{% url 'cadastrar_gravadora' %}"> Cadastrar um nova gravadora </a>
+    <ol>
+        {% for cliente in todos_clientes %}
+            <li> 
+                <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
+                <a href="{% url 'atualizar_cliente' cliente.id %}">Editar</a>
+                <a href="{% url 'deletar_cliente' cliente.id %}">Excluir</a>
+            </li>
+        {% empty %}
+ 
+        {% endfor %}
+    </ol>
     
 </body>
 </html>

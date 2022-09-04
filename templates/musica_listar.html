@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 <body>
@@ -11,17 +14,17 @@
     <h2>minhas musicas:</h2>
     <a href="{% url 'cadastrar_musica' %}">Cadastrar uma nova musica</a>
 
-    <ol>
-        {% for musicas in musica %}
-            <li> 
-                <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
-                <a href="{% url 'atualizar_musica' musica.id %}">Editar</a>
-                <a href="{% url 'deletar_musica' musica.id %}">Excluir</a>
-            </li>
+        {% for musicas in todas_musica %}
+          
+        <b>Título:{{ musica.titulo }} por {{ musica.autor }}</b>
+        <img src="/media/images/{{musica.capa}}" alt="" width="100px" height="100px"/>
+        <a href="{% url 'atualizar_musica' musica.id %}">Editar</a>
+        <a href="{% url 'deletar_musica' musica.id %}">Excluir</a>
+        
         {% empty %}
-            <b>ainda não temos musicas aqui aqui</b>
+        <b>ainda não temos musicas aqui aqui</b>
         {% endfor %}
-    </ol>
+  
     
 </body>
 </html>

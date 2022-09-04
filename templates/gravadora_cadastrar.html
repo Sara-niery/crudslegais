@@ -6,10 +6,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
     <title>Document</title>
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <h1>gravadoras</h1>
+    <form method="POST" action="{% url 'cadastrar_gravadora'%}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_cliente.as_p }}
+        <p><input type="submit" value="Cadastrar"/></p>
+    </form>
 </body>
 </html>

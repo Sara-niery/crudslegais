@@ -9,32 +9,26 @@ def primeirapag(request):
 def listar_musica(request):
     musicas = musica.objects.all()
     context = {
-        'musicas': musicas
+        'todas_musicas': musicas
     }
     return render(request, 'musica_listar.html', context)
 
 def cadastrar_musica(request):
-    if request.method == "POST":
-        form = MusicaForm(request.POST or None, request.FILES or None, instance= musica)
-        if form.is_valid():
-           form.save()
-           return redirect('listar_musica')
-           
-    else:
-        form = MusicaForm(instance= musica)
-        return render (request, )
-        
+    form = MusicaForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_musica')
+
     contexto = {
         'form_musica': form
     }
     return render(request,'musica_cadastrar.html',contexto)
 
-
 def atualizar_musica(request, id):
     minha_musica = musica.objects.get(id=id)
     
     if request.method == "POST":
-        form = MusicaForm(request.POST, request.FILES, instance=minha_musica)
+        form = MusicaForm(request.POST, request.FILES, instance=musica)
         if form.is_valid():
             form.save()
             print("salvou form")
@@ -46,9 +40,7 @@ def atualizar_musica(request, id):
         "musica": minha_musica,
         "form": form
     }
-    return render(request, 'musica_editar.html', context)
-        
-
+    return render(request, 'musica_editar.html', context)      
 
 def deletar_musica(request, id):
     minha_musica = musica.objects.get(id=id)
@@ -56,36 +48,32 @@ def deletar_musica(request, id):
     return redirect('listar_musica')
 
 
-
 def listar_cliente(request):
     ClientesAtuais = cliente.objects.all()
     context = {
         'todos_clientes': ClientesAtuais
     }
-    return render(request, 'primeirapag.html', context)
-
+    return render(request, 'cliente_listar.html', context)
 
 def cadastrar_cliente(request):
+    form = ClienteForm(request.POST or None, request.FILES or None, instance=cliente)
     if request.method == "POST":
-        form = ClienteForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+            if form.is_valid():
+                form.save()
             return redirect('listar_clientes')
             
     else:
-        form = ClienteForm()
-        
+            form = ClienteForm(instance=cliente)
+         
     contexto = {
         'form_cliente': form
     }
     return render(request,'cliente_cadastrar.html',contexto)
 
-
 def atualizar_cliente(request, id):
     meu_cliente = cliente.objects.get(id=id)
-    
+    form = ClienteForm(request.POST, request.FILES, instance=meu_cliente)
     if request.method == "POST":
-        form = ClienteForm(request.POST, request.FILES, instance=meu_cliente)
         if form.is_valid():
             form.save()
             print("salvou form")
@@ -107,7 +95,7 @@ def deletar_cliente(request, id):
 def listar_gravadora(request):
     GravadorasAtuais = gravadora.objects.all()
     context = {
-        'todas_gravadoras': GravadorasAtuais
+        'gravadoras': GravadorasAtuais
     }
     return render(request, 'gravadora_listar.html', context)
 

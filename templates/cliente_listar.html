@@ -1,18 +1,36 @@
 <!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 <body>
     <h1>Nossos cliente</h1>
-    <p>meus  livros:</p>
+
     {% for CL in todos_clientes %}
-    <p>Título: {{CL.nome}} </p>
+    <p>Título: {{form.nome1}} </p>
     {% empty %}
-    <p>ainda não temos clientes cadastrados</p>
+    <b>ainda não temos clientes cadastrados</b>
     {% endfor %}
+
+    <a href="{% url 'cadastrar_clientes' %}">Cadastrar um novo cliente</a>
+    <ol>
+        {% for cliente in todos_clientes %}
+            <li> 
+                <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
+                <a href="{% url 'atualizar_cliente' cliente.id %}">Editar</a>
+                <a href="{% url 'deletar_cliente' cliente.id %}">Excluir</a>
+            </li>
+        {% empty %}
+ 
+        {% endfor %}
+    </ol>
+    
+
 </body>
 </html>

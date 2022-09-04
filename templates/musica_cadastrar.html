@@ -11,8 +11,8 @@
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Cadastro</h1>
-    <form method="POST" action="{% url 'cadastrar_musica' %}"  enctype="multipart/form-data">
+    <h1>Cadastro das musicas</h1>
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form_musica.as_p }}
         <p><input type="submit" value="Cadastrar"/></p>

@@ -1,4 +1,3 @@
-from turtle import Turtle
 from django.db import models
 
 class gravadora(models.Model):
@@ -16,4 +15,4 @@ class musica(models.Model):
     titulo = models.CharField('Titulo', max_length=50)
     autor = models.CharField('Autor',max_length= 100)
     album = models.CharField('Album',max_length=50)
-    capa = models.ImageField(upload_to='images/')
+    capa = models.ImageField('capa',upload_to='images/', null=True)
