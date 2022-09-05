@@ -12,13 +12,12 @@
 <body>
     <h1>Minha biblioteca</h1>
     <h2>minhas musicas:</h2>
-    <a href="{% url 'cadastrar_musica' %}">Cadastrar uma nova musica</a>
-
+    <p><a href="{% url 'cadastrar_musica' %}">Cadastrar uma nova musica</a></p>
         <ol>
             {% for musica in todas_musicas %}
                 <li>
                     <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
-                    <img src="/media/images/{{musica.capa}}" alt="" width="100px" height="100px"/>
+                    <img src="{{musica.capa.url}}" alt="" width="" height="100px"/>
                     <a href="{% url 'atualizar_musica' musica.id %}">Editar</a>
                     <a href="{% url 'deletar_musica' musica.id %}">Excluir</a>
                 </li>

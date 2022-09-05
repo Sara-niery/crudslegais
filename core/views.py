@@ -25,22 +25,18 @@ def cadastrar_musica(request):
     return render(request,'musica_cadastrar.html',contexto)
 
 def atualizar_musica(request, id):
-    minha_musica = musica.objects.get(id=id)
+    minha_musica = musica.objects.get(pk=id)
     
-    if request.method == "POST":
-        form = MusicaForm(request.POST, request.FILES, instance=musica)
-        if form.is_valid():
-            form.save()
-            print("salvou form")
-            return redirect('listar_musica')
-    else:
-        form = MusicaForm(instance=minha_musica)
-
-    context = {
-        "musica": minha_musica,
-        "form": form
+    form = MusicaForm(request.POST or None, request.FILES or None, instance = minha_musica)
+    
+    if form.is_valid():
+        form.save()
+        return redirect('listar_musica')
+   
+    contexto = {
+        "form_musica": form
     }
-    return render(request, 'musica_editar.html', context)      
+    return render(request, 'musica_cadastrar.html', contexto )      
 
 def deletar_musica(request, id):
     minha_musica = musica.objects.get(id=id)
@@ -56,15 +52,11 @@ def listar_cliente(request):
     return render(request, 'cliente_listar.html', context)
 
 def cadastrar_cliente(request):
-    form = ClienteForm(request.POST or None, request.FILES or None, instance=cliente)
-    if request.method == "POST":
-            if form.is_valid():
-                form.save()
-            return redirect('listar_clientes')
+    form = ClienteForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_clientes')
             
-    else:
-            form = ClienteForm(instance=cliente)
-         
     contexto = {
         'form_cliente': form
     }
