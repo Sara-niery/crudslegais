@@ -15,3 +15,7 @@ h1 {
     font-weight: bolder
     ;
 }
+
+.responsividade {
+    display: grid;
+}
