@@ -12,9 +12,9 @@
 </head>
 <body>
     <h1>gravadoras</h1>
-    <form method="POST" action="{% url 'cadastrar_gravadora'%}" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form_cliente.as_p }}
+        {{ form_gravadora.as_p }}
         <p><input type="submit" value="Cadastrar"/></p>
     </form>
 </body>

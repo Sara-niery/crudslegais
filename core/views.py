@@ -55,7 +55,7 @@ def cadastrar_cliente(request):
     form = ClienteForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('listar_clientes')
+        return redirect('listar_cliente')
             
     contexto = {
         'form_cliente': form
@@ -63,18 +63,15 @@ def cadastrar_cliente(request):
     return render(request,'cliente_cadastrar.html',contexto)
 
 def atualizar_cliente(request, id):
-    meu_cliente = cliente.objects.get(id=id)
-    form = ClienteForm(request.POST, request.FILES, instance=meu_cliente)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            print("salvou form")
-            return redirect('listar_cliente')
-    else:
-        form = ClienteForm(instance=meu_cliente)
+    meu_cliente = cliente.objects.get(pk=id)
+    form = ClienteForm(request.POST or None, request.FILES or None, instance=meu_cliente)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_cliente')
+
     context = {
-        "cliente": meu_cliente,
-        "form": form
+
+        "formCliente": form
     }
     return render(request, 'cliente_editar.html', context)
 
@@ -84,44 +81,39 @@ def deletar_cliente(request, id):
     return redirect('listar_cliente')
 
 
-def listar_gravadora(request):
-    GravadorasAtuais = gravadora.objects.all()
-    context = {
-        'gravadoras': GravadorasAtuais
+def listarGravadora(request):
+    Gravadoras = gravadora.objects.all()
+    contexto = {
+        'todas_gravadoras': Gravadoras
     }
-    return render(request, 'gravadora_listar.html', context)
+    return render(request, 'gravadora_listar.html', contexto)
 
 def cadastrar_gravadora(request):
-    form = GravadoraForm(request.POST, request.FILES)
+    form = GravadoraForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('listar_gravadora')
-    else:
-        form = GravadoraForm()
+        return redirect('listarGravadora')
+
     contexto = {
         'form_gravadora': form
-            }
+    }
     return render(request,'gravadora_cadastrar.html',contexto)
 
 def atualizar_gravadora(request, id):
     minha_gravadora = gravadora.objects.get(id=id)
     
-    if request.method == "POST":
-        form = GravadoraForm(request.POST, request.FILES, instance=minha_gravadora)
-        if form.is_valid():
-            form.save()
-            print("salvou form")
-            return redirect('listar_gravadora')
-    else:
-        form = GravadoraForm(instance=minha_gravadora)
+    form = GravadoraForm(request.POST or None, request.FILES or None, instance=minha_gravadora)
+    if form.is_valid():
+        form.save()
+        return redirect('listarGravadora')
 
     context = {
-        "gravadora": minha_gravadora,
-        "form": form
+
+        "formGravadora": form
     }
-    return render(request, 'gravadora_editar.html', context)
+    return render(request,'gravadora_editar.html',context)
         
 def deletar_gravadora(request, id):
-    minha_gravadora = cliente.objects.get(id=id)
+    minha_gravadora = gravadora.objects.get(id=id)
     minha_gravadora.delete()
-    return redirect('listar_gravadora')
+    return redirect('listarGravadora')

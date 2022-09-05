@@ -13,7 +13,7 @@
     <h1>Atualizar</h1>
     <form method="POST" action="{% url 'atualizar_gravadora' gravadora.id %}"  enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form_gravadora.as_p }}
         <p><input type="submit" value="Atualizar"/></p>
 </body>
 </html>

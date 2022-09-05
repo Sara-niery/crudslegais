@@ -7,24 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
-    <title>Document</title>
+    <title>clientes</title>
 </head>
 <body>
     <h1>Nossos clientes</h1>
-
-    <a href="{% url 'cadastrar_clientes' %}">Cadastrar um novo cliente</a>
+    <a href="{% url 'cadastrar_cliente' %}">Cadastrar um novo cliente</a>
     <ol>
         {% for cliente in todos_clientes %}
             <li> 
-                <b>Título:</b> {{ cliente.nome1 }} 
+                <b>Nome:</b> {{ cliente.nome2 }} cpf {{ cliente.cpf }}
                 <a href="{% url 'atualizar_cliente' cliente.id %}">Editar</a>
                 <a href="{% url 'deletar_cliente' cliente.id %}">Excluir</a>
             </li>
-      
  
         {% empty %}
-    <b>ainda não temos clientes cadastrados</b>
-    {% endfor %}
+            <b>ainda não temos clientes cadastrados</b>
+        {% endfor %}
     </ol>
 </body>
 </html>
