@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.urls import path
 from core.views import listar_musica, cadastrar_musica, atualizar_musica, deletar_musica
 from core.views import listar_cliente, cadastrar_cliente , atualizar_cliente, deletar_cliente 
-from core.views import listarGravadora, cadastrar_gravadora, atualizar_gravadora, deletar_gravadora
+from core.views import listar_gravadora, cadastrar_gravadora, atualizar_gravadora, deletar_gravadora
 from core.views import primeirapag
 
 urlpatterns = [
@@ -21,7 +21,7 @@ urlpatterns = [
     path('cliente/atualizar/<int:id>',atualizar_cliente, name='atualizar_cliente'),
     path('cliente/deletar/<int:id>', deletar_cliente,name='deletar_cliente'),
 
-    path('gravadora/', listarGravadora , name ='listar_gravdoras'),
+    path('gravadora/', listar_gravadora , name ='listar_gravadoras'),
     path('gravadora/cadastrar/', cadastrar_gravadora ,name='cadastrar_gravadoras'),
     path('gravadora/atualizar/<int:id>', atualizar_gravadora, name='atualizar_gravadoras'),
     path('gravadora/deletar/<int:id>',deletar_gravadora, name='deletar_gravadoras'),

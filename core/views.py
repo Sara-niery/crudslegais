@@ -25,7 +25,7 @@ def cadastrar_musica(request):
     return render(request,'musica_cadastrar.html',contexto)
 
 def atualizar_musica(request, id):
-    minha_musica = musica.objects.get(pk=id)
+    minha_musica = musica.objects.get(id=id)
     
     form = MusicaForm(request.POST or None, request.FILES or None, instance = minha_musica)
     
@@ -63,15 +63,15 @@ def cadastrar_cliente(request):
     return render(request,'cliente_cadastrar.html',contexto)
 
 def atualizar_cliente(request, id):
-    meu_cliente = cliente.objects.get(pk=id)
+    meu_cliente = cliente.objects.get(id=id)
     form = ClienteForm(request.POST or None, request.FILES or None, instance=meu_cliente)
     if form.is_valid():
         form.save()
         return redirect('listar_cliente')
 
     context = {
-
-        "formCliente": form
+        "cliente": meu_cliente, 
+        "form_cliente": form
     }
     return render(request, 'cliente_editar.html', context)
 
@@ -81,18 +81,18 @@ def deletar_cliente(request, id):
     return redirect('listar_cliente')
 
 
-def listarGravadora(request):
+def listar_gravadora(request):
     Gravadoras = gravadora.objects.all()
     contexto = {
         'todas_gravadoras': Gravadoras
     }
-    return render(request, 'gravadora_listar.html', contexto)
+    return render(request,'gravadora_listar.html', contexto)
 
 def cadastrar_gravadora(request):
     form = GravadoraForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('listarGravadora')
+        return redirect('listar_gravadoras')
 
     contexto = {
         'form_gravadora': form
@@ -103,17 +103,35 @@ def atualizar_gravadora(request, id):
     minha_gravadora = gravadora.objects.get(id=id)
     
     form = GravadoraForm(request.POST or None, request.FILES or None, instance=minha_gravadora)
+
     if form.is_valid():
         form.save()
-        return redirect('listarGravadora')
+        return redirect('listar_gravadoras')
 
-    context = {
-
-        "formGravadora": form
+    contexto = {
+        "gravadora": minha_gravadora.id,
+        "form_gravadora": form
     }
-    return render(request,'gravadora_editar.html',context)
+    return render(request, 'gravadoraEditar.html', contexto)
         
+
+def atualizar_musica(request, id):
+    minha_musica = musica.objects.get(id=id)
+    
+    form = MusicaForm(request.POST or None, request.FILES or None, instance = minha_musica)
+    
+    if form.is_valid():
+        form.save()
+        return redirect('listar_musica')
+   
+    contexto = {
+        "form_musica": form
+    }
+    return render(request, 'musica_cadastrar.html', contexto )      
+
+
+
 def deletar_gravadora(request, id):
     minha_gravadora = gravadora.objects.get(id=id)
     minha_gravadora.delete()
-    return redirect('listarGravadora')
+    return redirect('listar_gravadoras')
