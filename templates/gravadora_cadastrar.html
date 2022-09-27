@@ -5,18 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="estilo.css" />
     <title>Cadastrar gravadora</title>
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>gravadoras</h1>
-    <form method="POST" enctype="multipart/form-data">
+    <h1>GRAVADORAS</h1>
+    <div class="container-fluid">
+        <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form_gravadora.as_p }}
-        <p><input type="submit" value="Cadastrar"/></p>
-    </form>
-    <p><a href="{% url 'listar_gravadoras' %}">Voltar</a></p>
+
+        <p><input type="submit" class="btn btn-verde" value="Cadastrar"/></p>
+        </form>
+        <p><a href="{% url 'listar_gravadoras' %}" class="btn-voltar">Voltar</a></p>
+    </div>
 </body>
 </html>

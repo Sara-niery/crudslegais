@@ -9,14 +9,15 @@
     <link rel="stylesheet" type="text/css" href="estilo.css" />
     <title>Cadastro de músicas</title>
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
+
 </head>
 <body>
-    <h1>Cadastro das musicas</h1>
+    <h1>CADASTRO DAS MUSICAS</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form_musica.as_p }}
-        <p><input type="submit" value="Cadastrar"/></p>
+        <p><input type="submit" class="btn btn-verde" value="Cadastrar"/></p>
     </form>
-    <p><a href="{% url 'listar_musica' %}">Voltar</a></p>
+    <p><a href="{% url 'listar_musica' %}" class="btn-voltar">Voltar</a></p>
 </body>
 </html>

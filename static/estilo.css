@@ -1,20 +1,66 @@
 body {
-    background-color: aquamarine;
-    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: medium;
     text-align: center;
     margin-left: 200px;
     margin-right: 200px;
-    margin-top: 100px;
+    margin-top: 15px;
 
 }
 
 h1 {
-    
-    font-size: 1.5cm;
-    font-weight: bolder
-    ;
+    font-size: 40px;
+    color: lime;
+    text-shadow: 2px 2px 0px #006000;
+    font-weight: bolder;
 }
+
+h2 {
+    color: antiquewhite;
+}
+
 a{
     color: black;
+}
+
+p {
+    color: antiquewhite;
+}
+
+.btn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+.btn-verde {
+    background: limegreen;
+    color: #fff;
+    box-shadow: 0 5px 2px #006000;
+}
+
+.btn-voltar {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 15px;
+    background: green;
+    color: #fff;
+    box-shadow: 0px 2px 0px darkgreen;
+
+
 }
