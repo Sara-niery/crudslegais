@@ -11,12 +11,12 @@
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Cadastro dos clientes</h1>
+    <h1>CADASTRO DOS CLIENTES</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form_cliente.as_p }}
-        <p><input type="submit" value="Cadastrar"/></p>
+        <p><input type="submit" class="btn btn-verde" value="Cadastrar"/></p>
     </form>
-    <p><a href="{% url 'listar_cliente' %}">Voltar</a></p>
+    <p><a href="{% url 'listar_cliente' %}" class="btn-voltar">Voltar</a></p>
 </body>
 </html>
