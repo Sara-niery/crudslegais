@@ -8,26 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Nossas músicas</title>
-    <style>
-        p {
-          color: black;
-        }
-      </style>
 </head>
 <body>
-    <h1>Minha biblioteca</h1>
-    <h2>Minhas músicas:</h2>
-    <p><a href="{% url 'cadastrar_musica' %}">Cadastrar uma nova musica</a></p>
+    <h1>NOSSAS MÚSICAS:</h1 >
+    <p><a href="{% url 'cadastrar_musica' %}" class="btn-verde btn">Cadastrar uma nova musica</a></p>
         <ol>
             {% for musica in todas_musicas %}
                 <li>
                     <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
                     <img src="{{musica.capa.url}}" alt="" width="" height="100px"/>
-                    <a href="{% url 'atualizar_musica' musica.id %}">Editar</a>
-                    <a href="{% url 'deletar_musica' musica.id %}">Excluir</a>
+                    <a href="{% url 'atualizar_musica' musica.id %}" class="btn-voltar">Editar</a>
+                    <a href="{% url 'deletar_musica' musica.id %}" class="btn-voltar">Excluir</a>
                 </li>
             {% empty %}
-                <b>ainda não temos livros aqui</b>
+                <b class="centro">AINDA NÃO TEMOS MUSICAS AQUI</b>
             {% endfor %}
         </ol>
     <p><a href="{% url 'primeirapag' %}" class="btn-voltar">Voltar</a></p>

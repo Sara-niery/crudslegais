@@ -9,14 +9,9 @@
     <link rel="stylesheet" type="text/css" href="estilo.css" />
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Editar cliente</title>
-    <style>
-        p {
-          color: black;
-        }
-      </style>
 </head>
 <body>
-    <h1>Atualizar</h1>
+    <h1>ATUALIZAR</h1>
     <form method="POST" action="{% url 'atualizar_cliente' cliente.id %}"  enctype="multipart/form-data">
         {% csrf_token %}
         {{ form_cliente.as_p }}

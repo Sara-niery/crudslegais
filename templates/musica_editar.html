@@ -16,7 +16,7 @@
       </style>
 </head>
 <body>
-    <h1>Atualizar</h1>
+    <h1>ATUALIZAR</h1>
     <form method="POST" action="{% url 'atualizar_musica' musica.id %}"  enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}

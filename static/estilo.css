@@ -17,15 +17,26 @@ h1 {
 }
 
 h2 {
-    color: antiquewhite;
+    color: white;
 }
 
-a{
+h5 {
     color: black;
+}
+a{
+    color: white;
+}
+
+b {
+    color: #fff;
 }
 
 p {
-    color: antiquewhite;
+    color: whitesmoke;
+}
+
+li {
+    color: #fff;
 }
 
 .btn {
@@ -63,4 +74,8 @@ p {
     box-shadow: 0px 2px 0px darkgreen;
 
 
+}
+
+.centro {
+    text-align: left;
 }
