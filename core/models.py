@@ -8,7 +8,7 @@ class gravadora(models.Model):
 
 class cliente(models.Model):
     nome2 = models.CharField('Nome', max_length=100)
-    cpf = models.CharField('CPF',max_length=11)
+    cpf = models.CharField('CPF',max_length=15)
     email = models.CharField('E-mail',max_length=50)
 
 class musica(models.Model):
