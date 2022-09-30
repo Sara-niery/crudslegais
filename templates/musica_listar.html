@@ -8,23 +8,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Nossas músicas</title>
+    <style>
+        b {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <h1>NOSSAS MÚSICAS:</h1 >
     <p><a href="{% url 'cadastrar_musica' %}" class="btn-verde btn">Cadastrar uma nova musica</a></p>
-        <ol>
-            {% for musica in todas_musicas %}
-                <li>
-                    <b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}
-                    <img src="{{musica.capa.url}}" alt="" width="" height="100px"/>
-                    <a href="{% url 'atualizar_musica' musica.id %}" class="btn-voltar">Editar</a>
-                    <a href="{% url 'deletar_musica' musica.id %}" class="btn-voltar">Excluir</a>
-                </li>
-            {% empty %}
-                <b class="centro">AINDA NÃO TEMOS MUSICAS AQUI</b>
-            {% endfor %}
-        </ol>
+        
+        {% for musica in todas_musicas %}
+        <P><b>Título:</b> {{ musica.titulo }} por {{ musica.autor }}</P>
+            <P><img src="{{musica.capa.url}}" alt="" width="" height="100px"/></P>
+            <a href="{% url 'atualizar_musica' musica.id %}" class="btn-voltar">Editar</a>
+            <a href="{% url 'deletar_musica' musica.id %}" class="btn-voltar">Excluir</a>
+        {% empty %}
+            <b>AINDA NÃO TEMOS MUSICAS AQUI</b>
+        {% endfor %}
+
     <p><a href="{% url 'primeirapag' %}" class="btn-voltar">Voltar</a></p>
+
+    <section class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+              <h5 class="card-title">Música</h5>
+              <p class="card-text">Gerencie as suas músicas</p>
+              <a href="musica" class="btn btn-verde">ir</a>
+              </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                  <h5 class="card-title">Música</h5>
+                  <p class="card-text">Gerencie as suas músicas</p>
+                  <a href="musica" class="btn btn-verde">ir</a>
+                  </div>
+                  </div>
+                </div>
+
+        </div>
+    </section>
 
     
 </body>

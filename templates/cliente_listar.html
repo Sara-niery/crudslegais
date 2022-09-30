@@ -9,26 +9,26 @@
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Nossos clientes</title>
     <style>
-        p {
-          color: black;
+        b {
+            color: #fff;
         }
+
       </style>
 </head>
 <body>
     <h1>NOSSOS CLIENTES</h1>
     <a href="{% url 'cadastrar_cliente' %}" class="btn btn-verde">CADASTRAR UM NOVO CLIENTE</a>
-    <ol>
-        {% for cliente in todos_clientes %}
-            <li> 
-                <b>Nome:</b> {{ cliente.nome2 }} cpf {{ cliente.cpf }}
-                <a href="{% url 'atualizar_cliente' cliente.id %}" class="btn-voltar"> Editar </a>
-                <a href="{% url 'deletar_cliente' cliente.id %}" class="btn-voltar"> Excluir </a>
-            </li>
+
+    {% for cliente in todos_clientes %}
+            <p><b>Nome:</b> {{ cliente.nome2 }} </p>
+            <p><b>CPF:</b> {{ cliente.cpf }}</p>
+            <a href="{% url 'atualizar_cliente' cliente.id %}" class="btn-voltar"> Editar </a>
+            <a href="{% url 'deletar_cliente' cliente.id %}" class="btn-voltar"> Excluir </a>
  
         {% empty %}
-            <b>AINDA NÃO TEMOS CLIENTES CADASTRADOS</b>
+            <p><b>AINDA NÃO TEMOS CLIENTES CADASTRADOS</b></p>
         {% endfor %}
-    </ol>
+
     <p><a href="{% url 'primeirapag' %}" class="btn-voltar">Voltar</a></p>
 </body>
 </html>

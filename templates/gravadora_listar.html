@@ -8,21 +8,24 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
     <title>Gravadoras</title>
+    <style>
+        b {
+            color: #fff;
+        }
+    </style>
+
 </head>
 <body>
     <h1>NOSSAS GRAVADORAS</h1>
     <a href="{% url 'cadastrar_gravadoras' %}" class="btn btn-verde"> Cadastrar um nova gravadora </a>
-    <ol>
-        {% for gravadora in todas_gravadoras %}
-        <li>
-                <b>Título:</b> {{ gravadora.nome1 }} CNPJ {{ gravadora.cnpj }}
-                <a href="{% url 'atualizar_gravadoras' gravadora.id %}" class="btn-voltar">Editar</a>
-                <a href="{% url 'deletar_gravadoras' gravadora.id %}" class="btn-voltar">Excluir</a>
-            </li>  
-            {% empty %}
-            <b>NÃO TEMOS GRAVADORAS AQUI</b>
-        {% endfor %}
-    </ol>
+    {% for gravadora in todas_gravadoras %}
+        <p><b>NOME:</b> {{ gravadora.nome1 }} </p>
+        <p><b>CNPJ </b>{{ gravadora.cnpj }}</p>
+        <a href="{% url 'atualizar_gravadoras' gravadora.id %}" class="btn-voltar">Editar</a>
+        <a href="{% url 'deletar_gravadoras' gravadora.id %}" class="btn-voltar">Excluir</a>
+    {% empty %}
+        <p><b>NÃO TEMOS GRAVADORAS AQUI</b></p>
+    {% endfor %}
     <p><a href="{% url 'primeirapag' %}" class="btn-voltar" >Voltar</a></p>
 </body>
 </html>
